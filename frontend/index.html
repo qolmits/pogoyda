@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погодний Консенсус Ultra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🌤️ Погодний Консенсус</h1>
+
+        <div class="search-box">
+            <input type="text" id="cityInput" list="citiesDataList" placeholder="Введіть назву міста...">
+            <datalist id="citiesDataList"></datalist>
+            <button id="searchBtn">Пошук</button>
+            <button id="favoriteBtn" class="btn-secondary">⭐ В обране</button>
+        </div>
+
+        <div id="errorBox" class="error-box hidden"></div>
+
+        <div id="weatherResult" class="hidden">
+            <div class="header-inline">
+                <h2 id="resultCityTitle">Погода</h2>
+                <span id="geoCoords" class="badge"></span>
+            </div>
+
+            <div class="consensus-card">
+                <h3>📊 Поточний консенсус</h3>
+                <div class="consensus-grid">
+                    <div class="cons-item">🌡️ Температура: <strong id="consTemp">-</strong>°C</div>
+                    <div class="cons-item">💧 Вологість: <strong id="consHum">-</strong>%</div>
+                    <div class="cons-item">💨 Вітер: <strong id="consWind">-</strong> м/с</div>
+                    <div class="cons-item">🌀 Тиск: <strong id="consPress">-</strong> мм рт.ст.</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchChart('temp')">🌡️ Графік температури (День)</button>
+                <button class="tab-btn" onclick="switchChart('wind')">💨 Графік вітру (День)</button>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="dayChart"></canvas>
+            </div>
+
+            <h3>📅 Прогноз на наступні 5 днів (Консенсусний)</h3>
+            <div id="daysForecastGrid" class="days-forecast-grid"></div>
+
+            <h3>Детальні дані сервісів на зараз:</h3>
+            <div id="providersGrid" class="providers-grid"></div>
+        </div>
+
+        <div class="favorites-section">
+            <h3>⭐ Ваші обрані міста</h3>
+            <div id="favoritesList" class="favorites-flex"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
